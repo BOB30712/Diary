@@ -88,8 +88,6 @@ document.addEventListener('DOMContentLoaded', () => {
       } catch (err) {
         console.error(err);
         alert('儲存事件時發生錯誤');
-      } finally {
-        ui.hideLoading(); // 不管成功 / 失敗，都把 overlay 關掉
       }
     });
   }
@@ -103,6 +101,8 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (err) {
       console.error(err);
       alert('載入事件失敗');
+    } finally {
+      ui.hideLoading(); // 不管成功 / 失敗，都把 overlay 關掉
     }
   }
 
