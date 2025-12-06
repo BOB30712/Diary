@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>日記</title>
+  <link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+<div class="app-shell">
+  <header class="top-nav">
+    <div class="top-nav-inner">
+      <div class="brand">
+        <div class="brand-icon"></div>
+        <span>日記</span>
+      </div>
+      <nav class="nav-links">
+        <a class="nav-link" href="index.html">當天記事</a>
+        <a class="nav-link" href="todos.html">待辦事項</a>
+        <a class="nav-link active" href="calendar.html">月曆</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="app-main">
+    <header class="page-header">
+      <h1 class="page-title">月曆</h1>
+      <p class="page-subtitle">
+        以月曆方式檢視每天的標籤與事件概況，後續可由 JS 自動填入。
+      </p>
+    </header>
+
+    <section class="card">
+      <div class="calendar-header">
+        <div class="calendar-title">
+          <span data-role="calendar-year">2025</span> 年
+          <span data-role="calendar-month">12</span> 月
+        </div>
+        <div class="calendar-controls">
+          <button
+            type="button"
+            class="btn btn-icon btn-outline"
+            aria-label="前一個月"
+            data-role="calendar-prev"
+          >&lt;</button>
+          <button
+            type="button"
+            class="btn btn-icon btn-outline"
+            aria-label="下一個月"
+            data-role="calendar-next"
+          >&gt;</button>
+        </div>
+      </div>
+
+      <div class="calendar-weekdays">
+        <div class="calendar-weekday">日</div>
+        <div class="calendar-weekday">一</div>
+        <div class="calendar-weekday">二</div>
+        <div class="calendar-weekday">三</div>
+        <div class="calendar-weekday">四</div>
+        <div class="calendar-weekday">五</div>
+        <div class="calendar-weekday">六</div>
+      </div>
+
+      <!-- 靜態示意：假設本月 1 號是星期一，後續可用 JS 動態產網格 -->
+      <div class="calendar-grid" data-role="calendar-grid">
+        <!-- 空白占位（如果月第一天不是星期日可用 JS 動態插入） -->
+        <div class="calendar-day"></div>
+
+        <!-- 範例：1 號 -->
+        <div class="calendar-day">
+          <div class="calendar-day-number">1</div>
+          <div class="calendar-day-tags">
+            <span class="calendar-tag">工作</span>
+            <span class="calendar-tag">會議</span>
+          </div>
+        </div>
+
+        <!-- 範例：2 號 -->
+        <div class="calendar-day">
+          <div class="calendar-day-number">2</div>
+          <div class="calendar-day-tags">
+            <span class="calendar-tag">學習</span>
+          </div>
+        </div>
+
+        <!-- 範例：3 號（今天示意） -->
+        <div class="calendar-day calendar-day--today">
+          <div class="calendar-day-number">3</div>
+          <div class="calendar-day-tags">
+            <span class="calendar-tag">工作</span>
+            <span class="calendar-tag">專案A</span>
+            <span class="calendar-tag">日記整理</span>
+          </div>
+        </div>
+
+        <!-- 為方便你看效果，再多放幾天 -->
+        <div class="calendar-day">
+          <div class="calendar-day-number">4</div>
+          <div class="calendar-day-tags">
+            <span class="calendar-tag">會議</span>
+          </div>
+        </div>
+
+        <div class="calendar-day">
+          <div class="calendar-day-number">5</div>
+          <div class="calendar-day-tags">
+            <span class="calendar-tag">個人</span>
+          </div>
+        </div>
+
+        <div class="calendar-day">
+          <div class="calendar-day-number">6</div>
+          <div class="calendar-day-tags">
+            <span class="calendar-tag">學習</span>
+            <span class="calendar-tag">閱讀</span>
+          </div>
+        </div>
+
+        <div class="calendar-day">
+          <div class="calendar-day-number">7</div>
+          <div class="calendar-day-tags">
+            <span class="calendar-tag">工作</span>
+          </div>
+        </div>
+
+        <!-- 其他日期可之後用 JS 產生填滿 -->
+        <!-- ... -->
+      </div>
+
+      <div style="margin-top:0.9rem; font-size:0.8rem; color:var(--text-muted);">
+        月曆格子的標籤僅為示意，未來可由 JS 根據 Google Sheet 中每日事件 / 待辦的標籤聚合後渲染。
+      </div>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    個人化日記 + 待辦事項系統 · 月曆檢視頁（靜態版）
+  </footer>
+</div>
+<script src="static/calendar.js"></script>
+</body>
+</html>

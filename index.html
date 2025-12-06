@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>日記</title>
+  <link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+<div class="app-shell">
+  <header class="top-nav">
+    <div class="top-nav-inner">
+      <div class="brand">
+        <div class="brand-icon"></div>
+        <span>日記</span>
+      </div>
+      <nav class="nav-links">
+        <a class="nav-link" href="index.html">當天記事</a>
+        <a class="nav-link" href="todos.html">待辦事項</a>
+        <a class="nav-link active" href="calendar.html">月曆</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="app-main">
+    <header class="page-header">
+      <h1 class="page-title">當天記事</h1>
+      <p class="page-subtitle">檢視與管理今天的所有事件，並為事件加上標籤。</p>
+    </header>
+
+    <section class="two-column">
+      <!-- 左側：新增 / 編輯今日事件 -->
+      <section class="card">
+        <h2 class="page-subtitle" style="margin-bottom:0.6rem;">新增事件</h2>
+        <p class="page-subtitle" style="font-size:0.8rem; margin-bottom:0.9rem;">
+          日期：<span data-role="today-display">2025-12-03</span>
+        </p>
+
+        <form class="form-grid" data-role="daily-form">
+          <div>
+            <label class="label" for="event-title">事件標題</label>
+            <input
+              class="input"
+              id="event-title"
+              name="title"
+              placeholder="例：與客戶會議 / 完成個人 OKR">
+          </div>
+
+          <div>
+            <label class="label" for="event-time">時間（選填）</label>
+            <!-- <input class="input" id="event-time" name="time" placeholder="例如：14:00"> -->
+            <input
+              class="input"
+              id="event-time"
+              name="time"
+              type="time"
+              step="60"
+            >
+          </div>
+
+          <div>
+            <label class="label" for="event-tags">標籤（逗號分隔）</label>
+            <!-- <input class="input" id="event-tags" name="tags" placeholder="例如：工作,專案A,會議"> -->
+            <!-- 由 JS 動態載入 Todos 的標籤 -->
+            <select
+              class="select"
+              id="event-tags"
+              name="tags"
+              data-role="tag-select"
+            >
+            </select>
+          </div>
+
+          <div>
+            <label class="label" for="event-notes">詳細內容</label>
+            <textarea class="textarea" id="event-notes" name="notes" placeholder="補充今天的想法、會議紀錄或重點…"></textarea>
+          </div>
+
+          <div class="btn-row" style="margin-top:0.1rem;">
+            <button type="submit" class="btn">儲存事件</button>
+            <button type="reset" class="btn btn-outline">清空內容</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- 右側：今日事件列表 -->
+      <section class="card">
+        <h2 class="page-subtitle" style="margin-bottom:0.8rem;">今日事件列表</h2>
+
+        <div style="margin-bottom:0.6rem; display:flex; justify-content:space-between; gap:0.5rem; flex-wrap:wrap;">
+          <span style="font-size:0.8rem; color:var(--text-muted);">
+            建議使用關鍵字
+          </span>
+          <div class="tag-list">
+            <span class="tag tag--work">工作</span>
+            <span class="tag tag--meeting">會議</span>
+            <span class="tag tag--study">學習</span>
+          </div>
+        </div>
+
+        <ul class="list" data-role="daily-list">
+          <!-- 範例事件 1 -->
+          <li class="list-item">
+            <div class="item-main">
+              <h3 class="item-title">與專案 A 客戶會議</h3>
+              <div class="item-meta">
+                時間：14:00 · 標籤：
+                <span class="tag tag--work">工作</span>
+                <span class="tag tag--meeting">會議</span>
+                <span class="tag">專案A</span>
+              </div>
+              <p style="margin:0; font-size:0.85rem; color:var(--text-main);">
+                討論下階段需求與驗收時程，記錄客戶提出的三項風險與兩個優先功能。
+              </p>
+            </div>
+            <div class="item-actions">
+              <button class="btn btn-outline" type="button">編輯</button>
+              <button class="btn btn-danger" type="button">刪除</button>
+            </div>
+          </li>
+
+          <!-- 範例事件 2 -->
+          <li class="list-item">
+            <div class="item-main">
+              <h3 class="item-title">整理今日學習筆記</h3>
+              <div class="item-meta">
+                時間：21:30 · 標籤：
+                <span class="tag tag--study">學習</span>
+                <span class="tag">日記整理</span>
+              </div>
+              <p style="margin:0; font-size:0.85rem; color:var(--text-main);">
+                整理 GitHub Pages + Google Sheet 串接方式，以及日記/待辦系統的資料結構。
+              </p>
+            </div>
+            <div class="item-actions">
+              <button class="btn btn-outline" type="button">編輯</button>
+              <button class="btn btn-danger" type="button">刪除</button>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    個人化日記 + 待辦事項系統 · 多頁式範例（僅 HTML / CSS，功能待 JS 實作）
+  </footer>
+</div>
+<script src="static/common.js"></script>
+<script src="static/daily.js"></script>
+</body>
+</html>

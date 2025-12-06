@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>日記</title>
+  <link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+<div class="app-shell">
+  <header class="top-nav">
+    <div class="top-nav-inner">
+      <div class="brand">
+        <div class="brand-icon"></div>
+        <span>日記</span>
+      </div>
+      <nav class="nav-links">
+        <a class="nav-link" href="index.html">當天記事</a>
+        <a class="nav-link" href="todos.html">待辦事項</a>
+        <a class="nav-link active" href="calendar.html">月曆</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="app-main">
+    <header class="page-header">
+      <h1 class="page-title">待辦事項</h1>
+      <p class="page-subtitle">
+        新增與管理待辦事項，並設定標籤供記事與月曆使用。
+      </p>
+    </header>
+
+    <section class="two-column">
+      <!-- 左側：新增待辦 -->
+      <section class="card">
+        <h2 class="page-subtitle" style="margin-bottom:0.6rem;">新增待辦事項</h2>
+
+        <form class="form-grid" data-role="todo-form">
+          <div>
+            <label class="label" for="todo-title">待辦內容</label>
+            <input class="input" id="todo-title" name="title" placeholder="例如：完成日記系統 UI">
+          </div>
+
+          <div>
+            <label class="label" for="todo-due">預計完成日期（選填）</label>
+            <!-- <input class="input" id="todo-due" name="dueDate" placeholder="例如：2025-12-05"> -->
+            <input
+              class="input"
+              id="todo-due"
+              name="dueDate"
+              type="date"
+            >
+          </div>
+          <div>
+            <label class="label" for="todo-tags">標籤（逗號分隔）</label>
+            <input class="input" id="todo-tags" name="tags" placeholder="例如：工作,專案A,高優先">
+          </div>
+
+          <div>
+            <label class="label" for="todo-notes">備註（選填）</label>
+            <textarea class="textarea" id="todo-notes" name="notes" placeholder="可以補充細節、連結或提醒。"></textarea>
+          </div>
+
+          <div class="btn-row" style="margin-top:0.1rem;">
+            <button type="submit" class="btn">新增待辦</button>
+            <button type="reset" class="btn btn-outline">清空內容</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- 右側：待辦列表 + 常用標籤區 -->
+      <section class="card">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:0.75rem; margin-bottom:0.8rem; flex-wrap:wrap;">
+          <div>
+            <h2 class="page-subtitle" style="margin-bottom:0.15rem;">待辦列表</h2>
+            <p class="page-subtitle" style="font-size:0.8rem;">
+              可由此刪除、更新狀態，並由 JS 與日記事件、月曆標籤同步。
+            </p>
+          </div>
+          <div>
+            <div class="label" style="margin-bottom:0.25rem;">建議使用關鍵字</div>
+            <div class="tag-list">
+              <span class="tag tag--work">工作</span>
+              <span class="tag tag--personal">個人</span>
+              <span class="tag tag--meeting">會議</span>
+              <span class="tag tag--study">學習</span>
+            </div>
+          </div>
+        </div>
+
+        <ul class="list" data-role="todo-list">
+          <!-- 範例待辦 1 -->
+          <li class="list-item">
+            <div class="item-main">
+              <h3 class="item-title">完成「當天記事」頁面的 UI</h3>
+              <div class="item-meta">
+                類型：<span class="pill-status">工作</span>
+                · 預計完成：2025-12-04 · 標籤：
+                <span class="tag tag--work">工作</span>
+                <span class="tag">UI設計</span>
+              </div>
+              <p style="margin:0; font-size:0.85rem; color:var(--text-main);">
+                將日記輸入區與當日事件列表完成排版，預留 JS 掛載節點。
+              </p>
+            </div>
+            <div class="item-actions">
+              <button type="button" class="btn-outline btn">標記完成</button>
+              <button type="button" class="btn btn-danger">刪除</button>
+            </div>
+          </li>
+
+          <!-- 範例待辦 2 -->
+          <li class="list-item">
+            <div class="item-main">
+              <h3 class="item-title">規劃與主管的週會議題</h3>
+              <div class="item-meta">
+                類型：<span class="pill-status">會議</span>
+                · 預計完成：2025-12-06 · 標籤：
+                <span class="tag tag--meeting">會議</span>
+                <span class="tag">專案A</span>
+              </div>
+              <p style="margin:0; font-size:0.85rem; color:var(--text-main);">
+                彙整本週進度、風險與下週目標，作為會議討論基礎。
+              </p>
+            </div>
+            <div class="item-actions">
+              <button type="button" class="btn-outline btn">標記完成</button>
+              <button type="button" class="btn btn-danger">刪除</button>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    個人化日記 + 待辦事項系統 · 待辦管理頁（靜態版）
+  </footer>
+</div>
+<script src="static/common.js"></script>
+<script src="static/todos.js"></script>
+</body>
+</html>
