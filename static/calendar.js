@@ -168,9 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const ok = window.confirm(`要前往 ${dateStr} 的記事頁面嗎？`);
     if (!ok) return;
 
-    // Flask 路由是 /daily，所以這裡用 daily?date=...
-    window.location.href = `daily?date=${encodeURIComponent(dateStr)}`;
-    // 如果是純靜態版，則改成：daily.html?date=...
-    // window.location.href = `daily.html?date=${encodeURIComponent(dateStr)}`;
+   
+    window.location.href = `index.html?date=${encodeURIComponent(dateStr)}`;
   }
 });
