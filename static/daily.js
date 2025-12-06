@@ -1,6 +1,7 @@
 // daily.js
 
 document.addEventListener('DOMContentLoaded', () => {
+  const { ui } = App;
   const { API_BASE, SC } = App.config;
   const todaySpan = document.querySelector('[data-role="today-display"]');
   const form = document.querySelector('[data-role="daily-form"]');
@@ -87,6 +88,8 @@ document.addEventListener('DOMContentLoaded', () => {
       } catch (err) {
         console.error(err);
         alert('儲存事件時發生錯誤');
+      } finally {
+        ui.hideLoading(); // 不管成功 / 失敗，都把 overlay 關掉
       }
     });
   }

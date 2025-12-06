@@ -1,6 +1,7 @@
 // todos.js
 
 document.addEventListener('DOMContentLoaded', () => {
+  const { ui } = App;
   const { API_BASE, SC } = App.config;
   const form = document.querySelector('[data-role="todo-form"]');
   const list = document.querySelector('[data-role="todo-list"]');
@@ -62,6 +63,8 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (err) {
       console.error(err);
       alert('載入事件失敗');
+    } finally {
+      ui.hideLoading(); // 不管成功 / 失敗，都把 overlay 關掉
     }
   }
 

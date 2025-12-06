@@ -13,8 +13,24 @@
     SC: decodeObfuscated(OBF_SC),
   };
 
+  const loadingOverlay = document.querySelector('[data-role="loading-overlay"]');
+
+  const ui = {
+    showLoading() {
+      if (loadingOverlay) {
+        loadingOverlay.classList.remove('is-hidden');
+      }
+    },
+    hideLoading() {
+      if (loadingOverlay) {
+        loadingOverlay.classList.add('is-hidden');
+      }
+    },
+  };
+
   // 統一掛在 window 底下，給各頁面使用 ----------------------------
   window.App = {
     config,
+    ui,
   };
 })(window);

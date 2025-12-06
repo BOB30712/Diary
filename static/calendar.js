@@ -1,6 +1,7 @@
 const API_BASE = 'https://script.google.com/macros/s/AKfycbzVE12JMAg-HyB1Zrk3mjs-tl0ZvEmZIkBwpGVjQgQchW8Jic6nyP7T4G5MqaEnJmsR4Q/exec';
 
 document.addEventListener('DOMContentLoaded', () => {
+  const { ui } = App;
   const yearSpan = document.querySelector('[data-role="calendar-year"]');
   const monthSpan = document.querySelector('[data-role="calendar-month"]');
   const grid = document.querySelector('[data-role="calendar-grid"]');
@@ -70,6 +71,8 @@ document.addEventListener('DOMContentLoaded', () => {
       eventsMap = await fetchMonthEvents(year, month);
     } catch (err) {
       console.error('載入月事件失敗', err);
+    } finally {
+      ui.hideLoading(); // 不管成功 / 失敗，都把 overlay 關掉
     }
 
     const firstDay = new Date(year, month - 1, 1).getDay(); // 0=Sun
